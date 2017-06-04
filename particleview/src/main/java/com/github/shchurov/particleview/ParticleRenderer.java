@@ -81,7 +81,7 @@ class ParticleRenderer implements GLSurfaceView.Renderer {
     private long lastUpdateTime;
 
     @Override
-    public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+    public void onSurfaceCreated(GL10 unused1, EGLConfig unused2) {
         initGl();
         initGlProgram();
         particleSystemNeedsSetup = true;
@@ -123,7 +123,7 @@ class ParticleRenderer implements GLSurfaceView.Renderer {
     }
 
     @Override
-    public void onSurfaceChanged(GL10 gl, int width, int height) {
+    public void onSurfaceChanged(GL10 unused, int width, int height) {
         glViewport(0, 0, width, height);
         surfaceHeight = height;
         initProjectionViewMatrix(width, height);

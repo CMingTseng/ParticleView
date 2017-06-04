@@ -15,23 +15,11 @@ public class ParticleView extends FrameLayout {
     }
 
     private void init() {
-        attachTextureView();
-        setupTextureView();
-    }
-
-    private void attachTextureView() {
         glTextureView = new GlTextureView(getContext());
         glTextureView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-        addView(glTextureView);
-    }
-
-    private void setupTextureView() {
-        glTextureView.setEGLContextClientVersion(2);
-        glTextureView.setEGLConfigChooser(8, 8, 8, 8, 16, 0);
-        glTextureView.setOpaque(false);
         renderer = new ParticleRenderer();
         glTextureView.setRenderer(renderer);
-        glTextureView.setRenderMode(GlTextureView.RENDERMODE_CONTINUOUSLY);
+        addView(glTextureView);
     }
 
     public void setTextureAtlasFactory(TextureAtlasFactory factory) {
@@ -43,11 +31,11 @@ public class ParticleView extends FrameLayout {
     }
 
     public void startRendering() {
-        glTextureView.onResume();
+        glTextureView.startRendering();
     }
 
     public void stopRendering() {
-        glTextureView.onPause();
+        glTextureView.stopRendering();
     }
 
 }
